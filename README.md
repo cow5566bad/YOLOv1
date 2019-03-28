@@ -37,7 +37,7 @@ Note that your predicted label file should have the same filename as that of its
 ### Visualization
 To visualization the ground truth or predicted bounding boxes in an image, you can run the provided visualization script provided in the starter code by using the following command.
 
-    python3 visualize_bbox.py <label.txt> <image.jpg>
+    python3 visualize_bbox.py <image.jpg> <label.txt>
 
 # Submission Rules
 ### Deadline
