@@ -49,7 +49,7 @@ To visualization the ground truth or predicted bounding boxes in an image, you c
 -   You are encouraged to discuss homework assignments with your fellow class members, but you must complete the assignment by yourself. TAs will compare the similarity of everyone’s submission. Any form of cheating or plagiarism will not be tolerated and will also result in an **F** grade for students with such misconduct.
   
 ### Late Submission Policy
-You have a three-day delay quota for the whole semester. Once you have exceeded your quota, the credit of any late submission will be deducted 30% each day.
+You have a three-day delay quota for the whole semester. Once you have exceeded your quota, the credit of any late submission will be deducted by 30% each day.
 
 Note that while it is possible to continue your work in this repository after the deadline, **we will by default grade your last commit before the deadline** specified above. If you wish to use your quota, please contact the TAs and let them know which commit to grade.
 
@@ -78,12 +78,13 @@ Below is a list of packages you are allowed to import in this assignment:
 > h5py: 2.9.0  
 > Numpy: 1.16.2  
 > Pandas: 0.24.0  
-> torchvision, open-cv, Matplotlib, Scikit-image, Pillow, Scipy, Python standard Lib.
+> torchvision, open-cv, matplotlib, scikit-image, Pillow, scipy  
+> The Python Standard Library
 
 E-mail or ask the TAs first if you want to import other packages.
 
 ### Remarks
-- If your model is larger than GitHub’s maximum capacity (100MB), you can upload your model to another cloud service (e.g. Dropbox). However, you shell script files should be able to download the model automatically. For a tutorial on how to do this using Dropbox, please click [this link](https://goo.gl/XvCaLR).
+- If your model is larger than GitHub’s maximum capacity (100MB), you can upload your model to another cloud service (e.g. Dropbox). However, your shell script files should be able to download the model automatically. For a tutorial on how to do this using Dropbox, please click [this link](https://goo.gl/XvCaLR).
 - **DO NOT** hard code any path in your file or script, and the execution time of your testing code should not exceed an allowed maximum of **10 minutes**.
 - **If we fail to run your code due to not following the submission rules, you will receive 0 credit for this assignment.**
 
