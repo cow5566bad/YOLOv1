@@ -4,9 +4,10 @@ import torch
 import torch.utils.model_zoo as model_zoo
 
 
-__all__ = ['vgg16_bn']
+__all__ = ['vgg16_bn', 'vgg19_bn']
 model_urls = {
     'vgg16_bn': 'https://download.pytorch.org/models/vgg16_bn-6c64b313.pth',
+    'vgg19_bn': 'https://download.pytorch.org/models/vgg19_bn-c79401a0.pth',
 }
 
 
@@ -76,20 +77,21 @@ def conv_bn_relu(in_channels,out_channels,kernel_size=3,stride=2,padding=1):
 
 
 cfg = {
-    'D': [64, 64, 'M', 128, 128, 'M', 256, 256, 256, 'M', 512, 512, 512, 'M', 512, 512, 512, 'M'],
+    'D': [64, 64, 'M', 128, 128, 'M', 256, 256, 256, 'M', 512, 512, 512, 'M', 512, 512, 512,
+        'M'],
+    'E': [64, 64, 'M', 128, 128, 'M', 256, 256, 256, 256, 'M', 512, 512, 512, 512, 'M',
+            512, 512, 512, 512, 'M'],
 }
 
 
-
-
-def Yolov1_vgg16bn(pretrained=False, **kwargs):
-    """VGG 16-layer model (configuration "D") with batch normalization
+def Yolov1_vgg19bn(pretrained=False, **kwargs):
+    """VGG 19-layer model (configuration "E") with batch normalization
     Args:
         pretrained (bool): If True, returns a model pre-trained on ImageNet
     """
-    yolo = VGG(make_layers(cfg['D'], batch_norm=True), **kwargs)
+    yolo = VGG(make_layers(cfg['E'], batch_norm=True), **kwargs)
     if pretrained:
-        vgg_state_dict = model_zoo.load_url(model_urls['vgg16_bn'])
+        vgg_state_dict = model_zoo.load_url(model_urls['vgg19_bn'])
         yolo_state_dict = yolo.state_dict()
         for k in vgg_state_dict.keys():
             if k in yolo_state_dict.keys() and k.startswith('features'):
@@ -101,7 +103,7 @@ def Yolov1_vgg16bn(pretrained=False, **kwargs):
 
 def test():
     import torch
-    model = Yolov1_vgg16bn(pretrained=True)
+    model = Yolov1_vgg19bn(pretrained=True)
     img = torch.rand(1,3,448,448)
     output = model(img)
     print(output.size())
