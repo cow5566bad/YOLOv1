@@ -44,7 +44,7 @@ To visualization the ground truth or predicted bounding boxes in an image, you c
 108/04/17 (Wed.) 01:00 AM
 
 ### Late Submission Policy
-You have a three-day delay quota for the whole semester. Once you have exceeded your quota, the credit of any late submission will be deducted by 30% each day.
+You have a five-day delay quota for the whole semester. Once you have exceeded your quota, the credit of any late submission will be deducted by 30% each day.
 
 Note that while it is possible to continue your work in this repository after the deadline, **we will by default grade your last commit before the deadline** specified above. If you wish to use your quota or submit an earlier version of your repository, please contact the TAs and let them know which commit to grade.
 
