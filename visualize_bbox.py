@@ -37,7 +37,7 @@ Color = [[0, 0, 0],
                     [0, 192, 0],
                     [128, 192, 0],
                     [0, 64, 128]]
-        
+ 
 def parse_det(detfile):
     result = []
     with open(detfile, 'r') as f:

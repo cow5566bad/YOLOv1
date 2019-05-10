@@ -37,6 +37,7 @@ def main(args):
                         float(box[4])
                         ))
         txt.close()
+
 def _parse_args():
     parser = argparse.ArgumentParser(
         description='Script to train.')
@@ -44,7 +45,6 @@ def _parse_args():
                         help='Path to image directory.')
     parser.add_argument('store_label_dir', type=str,
                         help='Path to stroe label directory.')
-
     args = parser.parse_args()
     return args
 

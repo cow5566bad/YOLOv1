@@ -23,7 +23,6 @@ def _parse_args():
                         help='Directory to valid image directory.')
     parser.add_argument('valid_label_dir', type=str,
                         help='Directory to valid label directory.')
-
     args = parser.parse_args()
     return args
 

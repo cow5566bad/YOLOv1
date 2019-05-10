@@ -8,8 +8,7 @@ from torchvision import transforms
 
 class mydataset(data.Dataset):
 
-    def __init__(self, image_dir, label_dir, image_size = 448, train = True):
-        
+    def __init__(self, image_dir, label_dir, image_size = 448, train = True): 
         self.image_dir = image_dir
         self.label_dir = label_dir
         self.image_size = image_size
@@ -72,7 +71,7 @@ class mydataset(data.Dataset):
         grid_num = 7
         target = torch.zeros(grid_num, grid_num, 26)
         cell_size = self.image_size / grid_num
-        
+
         for box in boxes:
             # box is marked in 512*512, but image has been scaled down to 
             # 448 * 448, thereforem we need some scaling
@@ -97,18 +96,17 @@ class mydataset(data.Dataset):
 class test_dataset(data.Dataset):
 
     def __init__(self, image_dir, store_label_dir, image_size = 448, train = False):
-        
         self.image_dir = image_dir
         self.store_label_dir = store_label_dir
         self.image_size = image_size
         self.normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
                                                  std=[0.229, 0.224, 0.225])
         self.train = train
-        
+
         # load images
-        self.filenames = glob.glob(self.image_dir + '/*.jpg') 
+        self.filenames = glob.glob(self.image_dir + '/*.jpg')
         self.filenames.sort()
-        
+
     def __len__(self):
         return  len(self.filenames)
 
@@ -122,39 +120,6 @@ class test_dataset(data.Dataset):
         rgb_img = torch.Tensor(rgb_img)
         rgb_img = rgb_img.transpose(1, 2)
         rgb_img = rgb_img.transpose(0, 1)
-        rgb_img = self.normalize(rgb_img) 
+        rgb_img = self.normalize(rgb_img)
         return rgb_img
 
-def test():
-    from torch.utils.data import DataLoader
-    data = mydataset("hw2_train_val/train15000/images/",
-            "hw2_train_val/train15000/labelTxt_hbb/")
-    dataloader = DataLoader(data, batch_size = 1, shuffle=False)
-    for i, pack in enumerate(dataloader):
-        if i == 1: break
-        img, target = pack
-        img = img[i].numpy()
-        img = cv2.resize(img, (512, 512), interpolation=cv2.INTER_CUBIC)
-        img = img.astype('int')
-        r, g, b = cv2.split(img)
-        img = cv2.merge([b, g, r])
-        cv2.imwrite('test.jpg', img)
-        
-
-        for j in range(7):
-            for k in range(7):
-                print('loaded target:', target[i, j, k])
-                xy = box_to_xy(j, k, target[i, j, k, :4])
-                print(xy*(512/448))
-def box_to_xy(i, j, box):
-    grid_x = j * 64
-    xmax = (448*box[2]+2*(64*box[0]+grid_x))/2
-    xmin = xmax-448*box[2]
-    
-    grid_y = i * 64
-    ymax = (448*box[3]+2*(64*box[1]+grid_y))/2
-    ymin = ymax-448*box[3]
-    return torch.Tensor([xmin, ymin,  xmax, ymax])
-
-if __name__ == '__main__':
-    test()
