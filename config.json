@@ -1,6 +1,0 @@
-{
-    "train_dir": "/home/cow5566bad/DLCV/hw2-cow5566bad/hw2_train_val/train15000/images",
-    "train_label_dir": "/home/cow5566bad/DLCV/hw2-cow5566bad/hw2_train_val/train15000/labelTxt_hbb",
-    "valid_dir": "/home/cow5566bad/DLCV/hw2-cow5566bad/hw2_train_val/val1500/images",
-    "valid_label_dir": "/home/cow5566bad/DLCV/hw2-cow5566bad/hw2_train_val/val1500/labelTxt_hbb"
-}

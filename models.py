@@ -17,9 +17,7 @@ class VGG(nn.Module):
         super(VGG, self).__init__()
         self.features = features
         self.image_size = image_size
-        
         self.yolo = nn.Sequential(
-            #TODO
             nn.Linear(512 * 7 * 7, 4096),
             nn.ReLU(True),
             nn.Dropout(),

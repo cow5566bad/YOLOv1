@@ -106,8 +106,7 @@ class Predictor():
                 batch_size = self.batch_size,
                 shuffle = False)
         logging.info('load trained model...')
-        #self.load('yolo.pkl')
-        self.load('baseline.pkl')
+        self.load('yolo.pkl')
         logging.info('start predicting...')
 
         trange = tqdm(enumerate(loader), total = len(loader), desc='testing')
